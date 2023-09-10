@@ -3,7 +3,6 @@ import { IProduct } from '../models';
 
 interface ProductProps {
   product: IProduct;
-  title: string;
 }
 
 function Product({ product }: ProductProps) {

@@ -1,11 +1,17 @@
 import { Product } from './components/Product';
-import { productsData } from './utilities/productsData';
+import Spinner from './components/Spinner';
+import { useProducts } from './components/hooks/productHandling';
 
 function App() {
+  const { productsData, isLoading, error } = useProducts();
+
   return (
     <div className="container mx-auto max-w-2xl pt-5">
-      <Product product={productsData[0]} title={'first'} />
-      <Product product={productsData[1]} title={'second'} />
+      {!!isLoading && <Spinner />}
+      {!!error && <p className="text-center text-red-600 font-bold">{error}</p>}
+      {productsData.map((el) => (
+        <Product product={el} key={el.id} />
+      ))}
     </div>
   );
 }
