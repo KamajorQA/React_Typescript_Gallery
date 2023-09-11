@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getProductsList } from '../../utilities/api';
-import { IProduct } from '../../models';
+import { getProductsList } from '../utilities/api';
+import { IProduct } from '../models';
 
-function useProducts() {
+function useProductRender() {
   const [productsData, setProductsData] = useState<IProduct[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,4 +27,4 @@ function useProducts() {
   return { productsData, isLoading, error };
 }
 
-export { useProducts };
+export { useProductRender };

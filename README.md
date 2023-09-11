@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Галерея продуктов на React, Typescript и Tailwind
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**_Минималистичный SPA-проект получения с удаленного сервера и отображения списка карточек с CRUD-операциями_**
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### Использован шаблон c-r-a --template typescript
 
-### `npm start`
+Для первичной инициализации проекта в его директории сперва нужно установить зависимости с помощью команды:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Для локального запуска проекта нужно использовать команду
 
-### `npm test`
+```sh
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## В проекте использованы библиотеки
 
-### `npm run build`
+- [x] Typescript;
+- [x] Tailwind;
+- [x] react-loader-spinner
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Весь CSS реализован через служебные классы Tailwind, исключая пару точечных инлайновых стилей.  
+![styling](./src/assets/readmeImg/styling.PNG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Библиотека react-loader-spinner - минималистичная библиотека loader'ов (загрузчиков), готовых к использованию с возможностью небольшой кастомизации. Использована в компоненте Spinner'а.  
+![spinner](./src/assets/readmeImg/spinner.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Данные для проекта получаются из открытого API [fakestoreapi.com](https://fakestoreapi.com/)
 
-### `npm run eject`
+Получение данных с удаленного сервера реализовано через нативный Fetch API.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+В логике приложения выделены _транспортный_ и _логический_ слои:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Транспортный слой вынесен в утилиту api.ts.  
+  В нем реализуются только сами запросы к серверу.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Работа с логикой вынесена в кастомные хуки.  
+  Там же происходит обработка ответов сервера и отлов возможных ошибок.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Любые замечания по работе приложения приветствуются 😊

@@ -1,11 +1,11 @@
 interface IProduct {
-  id: number;
+  id?: number;
   title: string;
   price: number;
   description: string;
-  category: string;
+  category?: string;
   image: string;
-  rating: {
+  rating?: {
     rate: number;
     count: number;
   };
