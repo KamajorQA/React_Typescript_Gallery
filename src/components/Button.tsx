@@ -3,7 +3,7 @@ import { MouseEventHandler } from 'react';
 interface ButtonProps {
   btnClasses: string;
   handleButtonClick: MouseEventHandler;
-  btnText: string;
+  btnText: string | React.ReactNode;
   btnType: 'button' | 'reset' | 'submit' | undefined;
 }
 

@@ -6,7 +6,7 @@ interface SpinnerProps {
 
 function Spinner({ visible }: SpinnerProps) {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="grow flex justify-center items-center">
       <Dna width="70" visible={visible} />
     </div>
   );

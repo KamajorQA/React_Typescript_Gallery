@@ -29,22 +29,24 @@ function Product({ product }: ProductProps) {
       {!!details && (
         <div className="flex flex-col gap-5 justify-items-center items-center">
           <p className="text-center">{product.description}</p>
-          <p className="flex gap-5">
-            <span>
-              Rate:
-              <span style={{ fontWeight: 'bold' }}>
-                {' '}
-                {product.rating?.rate}
+          {!!product?.rating && (
+            <p className="flex gap-5">
+              <span>
+                Rate:
+                <span style={{ fontWeight: 'bold' }}>
+                  {' '}
+                  {product.rating?.rate}
+                </span>
               </span>
-            </span>
-            <span className="opacity-25">|</span>
-            <span>
-              Reviews:{' '}
-              <span style={{ fontWeight: 'bold' }}>
-                {product.rating?.count}
+              <span className="opacity-25">|</span>
+              <span>
+                Reviews:{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {product.rating?.count}
+                </span>
               </span>
-            </span>
-          </p>
+            </p>
+          )}
         </div>
       )}
     </article>

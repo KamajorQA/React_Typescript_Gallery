@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
-import { addNewProduct } from '../utilities/api';
 import { ErrorBlock } from './ErrorBlock';
+import { addNewProduct } from '../utilities/api';
+import { IProduct } from '../models';
 
-function AddProductForm() {
-  const btnBgClasses = 'bg-gradient-to-r from-indigo-400/50 to-yellow-500/50';
-  const btnHoverClasses = 'hover:from-pink-500 hover:to-yellow-500';
+interface AddProductFormProps {
+  onCreateSuccess: (createdProduct: IProduct) => void;
+}
+
+function AddProductForm({ onCreateSuccess }: AddProductFormProps) {
+  const btnBgClasses =
+    'bg-gradient-to-r from-indigo-400/50 to-yellow-500/50 duration-500';
+  const btnHoverClasses = 'hover:bg-red-400';
   const btnMainClasses = 'py-2 px-4 ml-1 w-32 border rounded';
   const btnClasses = `${btnBgClasses} ${btnHoverClasses} ${btnMainClasses}`;
 
@@ -21,8 +27,6 @@ function AddProductForm() {
   });
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    console.warn('currrent state : ', formData);
-    console.log('event.target.name > ', event.target.name);
     setFormData({ ...formData, [event.target.name]: event.target.value });
   }
 
@@ -35,7 +39,9 @@ function AddProductForm() {
       return;
     }
 
-    addNewProduct(formData);
+    addNewProduct(formData).then((data) => {
+      onCreateSuccess(data);
+    });
 
     setFormData({
       title: '',
